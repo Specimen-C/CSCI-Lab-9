@@ -1,6 +1,5 @@
 public class Station{
 
-
     protected String name; 
     protected String line;
     protected boolean inService;
@@ -61,10 +60,20 @@ public class Station{
     }
 
     public void connect(Station station) {
+        /*
         next = station;
         station.previous = this;
+        */
+
+        this.next = station;
+        station.previous = this;
+    
+        if (station instanceof TransferStation) {
+          ((TransferStation) station).addTransferStationPrev(this);
+        }
     }
 
+    /*
     public void connect(TransferStation station) {
         next = station;
         if(line.equals(station.line)) {
@@ -79,7 +88,7 @@ public class Station{
         station.previous = this;
         station.next = this;
     }
-
+    */
 
     public String getName() {
         return name;
