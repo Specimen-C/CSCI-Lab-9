@@ -4,7 +4,7 @@ public class Station{
     protected String name; 
     protected String line;
     protected boolean inService;
-    protected Station next;
+    public Station next;
     protected Station previous;
 
     public Station(String line, String name) {
@@ -17,12 +17,12 @@ public class Station{
 
     public String toString() {
         String connections = "";
-        if(next == null) {
+        if(previous == null) {
             //System.out.println("Previous Station is Null");
             connections += "previous station: none";
         }
         else {
-            connections += "previous station: " + next.name;
+            connections += "previous station: " + previous.name;
         }
         if(next == null) {
             //System.out.println("Next Station is Null");
@@ -43,7 +43,7 @@ public class Station{
 
     public void addNext(Station station) {
         next = station;
-        station.next = this;
+        station.previous = this;
         //System.out.println("Next Station  = " + next.toString());
     }
 
@@ -61,9 +61,28 @@ public class Station{
     }
 
     public void connect(Station station) {
-        previous = station;
+        next = station;
+        station.previous = this;
+    }
+
+    public void connect(TransferStation station) {
+        next = station;
+        if(line.equals(station.line)) {
+            station.previous = this;
+        }
+
+        //station.addTransferStationPrev(this);
+    }
+
+    public void connect(EndStation station) {
+        next = station;
+        station.previous = this;
         station.next = this;
     }
 
+
+    public String getName() {
+        return name;
+    }
 
 }

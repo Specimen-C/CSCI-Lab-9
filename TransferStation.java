@@ -23,12 +23,12 @@ public class TransferStation extends Station {
 
     public void addTransferStationPrev(Station station) {
         otherStations.add(station);
-        station.next = this;
+        station.previous = this;
     }
 
     public void addTransferStationNext(Station station) {
         otherStations.add(station);
-        station.previous = this;
+        station.next = this;
     }
 
 }

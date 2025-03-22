@@ -33,6 +33,7 @@ public class MetroSimulator{
 		makeRedLine();
 		makePurpleLine();
 
+		PrintLines();
 		
 		//int stops = va_square.tripLength(metro_center);
 		//System.out.println("There are " + stops + " stops between Virginia Square and Metro Center");
@@ -63,10 +64,12 @@ public class MetroSimulator{
 		// Metro Center defined above
 		s4 = new Station("purple", "S4");
 		s5 = new EndStation("purple", "S5");
+
 	}
 
 	public static EndStation makeOrangeLine(){
 		va_square.connect(clarendon);
+		va_square.makeEnd();
 		clarendon.connect(court_house);
 		court_house.connect(rosslyn);
 		rosslyn.connect(foggy_bottom);
@@ -75,6 +78,7 @@ public class MetroSimulator{
 		mcpherson_square.connect(metro_center);
 		metro_center.connect(federal_triangle);
 		federal_triangle.connect(smithsonian);
+		smithsonian.makeEnd();
 		//connect the other stations here
 
 		return va_square;
@@ -83,11 +87,13 @@ public class MetroSimulator{
 
 	public static EndStation makeRedLine(){
 		woodley_park.connect(dupont_circle);
+		woodley_park.makeEnd();
 		dupont_circle.connect(farragut_north);
 		farragut_north.connect(metro_center);
 		metro_center.addTransferStationPrev(farragut_north);
 		metro_center.addTransferStationNext(gallery_place);
 		gallery_place.connect(judiciary_square);
+		judiciary_square.makeEnd();
 		//connect the other stations here
 
 		return woodley_park;
@@ -95,13 +101,26 @@ public class MetroSimulator{
 
 	public static EndStation makePurpleLine(){
 		s1.connect(s2);
+		s1.makeEnd();
 		s2.connect(s3);
 		metro_center.addTransferStationPrev(s3);
 		metro_center.addTransferStationNext(s4);
 		s4.connect(s5);
+		s5.makeEnd();
 		//connect the other stations here
 
 		return s1;
 	}
 	
+
+	public static void PrintLines() {
+		Station iter = makeOrangeLine();
+		System.out.print(iter.toString() + " ->\n");
+		iter = iter.next;
+		while(!(iter instanceof EndStation )) {
+			System.out.print(iter.toString() + " ->\n");
+			iter = iter.next;
+		}
+		System.out.print(iter.toString() + " ->\n");
+	}
 }
