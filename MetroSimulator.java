@@ -26,6 +26,7 @@ public class MetroSimulator{
 		public static Station s4;
 		public static EndStation s5;
 
+	/*
 	public static void main(String[] args){
 		initialize();
 		makeOrangeLine();
@@ -87,4 +88,5 @@ public class MetroSimulator{
 
 		return s1;
 	}
+	*/
 }

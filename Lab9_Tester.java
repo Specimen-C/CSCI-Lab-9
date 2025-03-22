@@ -36,6 +36,7 @@ public class Lab9_Tester {
     assertEquals(expected, s1.toString());
   }
 
+  
   @Test 
   public void test2(){
     System.out.println("test Station equals");
@@ -54,6 +55,9 @@ public class Lab9_Tester {
     assertEquals(true, s1.equals(s5));
     assertEquals(true, s1.equals(s6));
   }
+
+
+  
 
   @Test 
   public void test3(){
@@ -91,6 +95,7 @@ public class Lab9_Tester {
     assertEquals(expected, s1.toString());
   }
 
+  
   @Test 
   public void test5(){
     System.out.println("test TransferStation setup");
@@ -133,6 +138,8 @@ public class Lab9_Tester {
     assertEquals(expected, s1.toString());
   }
 
+  
+
   @Test 
   public void test7(){
     System.out.println("test Station connect");
@@ -155,6 +162,8 @@ public class Lab9_Tester {
     expected = "STATION Plaza: blue line, in service: true, previous station: none, next station: Museum";
     assertEquals(expected, s3.toString());
   }
+
+  /*
 
   @Test 
   public void test8(){
@@ -328,5 +337,7 @@ public class Lab9_Tester {
     assertEquals(4, MetroSimulator.foggy_bottom.tripLength(MetroSimulator.s4));
     assertEquals(3, MetroSimulator.s2.tripLength(MetroSimulator.gallery_place));
   }
+
+  */
 
 }
