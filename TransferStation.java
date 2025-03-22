@@ -2,17 +2,17 @@ import java.util.*;
 
 public class TransferStation extends Station {
 
-    protected ArrayList<Station> transfers;
+    protected ArrayList<Station> otherStations;
 
     public TransferStation(String line, String name) {
         super(line, name);
-        transfers = new ArrayList<Station>();
+        otherStations = new ArrayList<Station>();
     }
 
     public String toString() {
         String transferString = "\n\tTransfers: \n";
-        if(transfers.size() > 0) {
-            Iterator<Station> iter = transfers.iterator(); 
+        if(otherStations.size() > 0) {
+            Iterator<Station> iter = otherStations.iterator(); 
             while (iter.hasNext()) { 
                 transferString += "\t" + iter.next().toString() + "\n";
             }
@@ -22,13 +22,13 @@ public class TransferStation extends Station {
     }
 
     public void addTransferStationPrev(Station station) {
-        transfers.add(station);
-        station.nextStation = this;
+        otherStations.add(station);
+        station.next = this;
     }
 
     public void addTransferStationNext(Station station) {
-        transfers.add(station);
-        station.previousStation = this;
+        otherStations.add(station);
+        station.previous = this;
     }
 
 }

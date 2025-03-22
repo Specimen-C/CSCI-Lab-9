@@ -4,32 +4,32 @@ public class Station{
     protected String name; 
     protected String line;
     protected boolean inService;
-    protected Station nextStation;
-    protected Station previousStation;
+    protected Station next;
+    protected Station previous;
 
     public Station(String line, String name) {
         this.line = line;
         this.name = name;
         this.inService = true;
-        this.nextStation = null;
-        this.previousStation = null;
+        this.next = null;
+        this.next = null;
     }   
 
     public String toString() {
         String connections = "";
-        if(previousStation == null) {
+        if(next == null) {
             //System.out.println("Previous Station is Null");
             connections += "previous station: none";
         }
         else {
-            connections += "previous station: " + previousStation.name;
+            connections += "previous station: " + next.name;
         }
-        if(nextStation == null) {
+        if(next == null) {
             //System.out.println("Next Station is Null");
             connections += ", next station: none";
         }
         else {
-            connections += ", next station: " + nextStation.name;
+            connections += ", next station: " + next.name;
         }
         
         return "STATION " + name + ": " + line + " line, in service: " + inService + ", " + connections;
@@ -42,14 +42,14 @@ public class Station{
     }
 
     public void addNext(Station station) {
-        nextStation = station;
-        station.previousStation = this;
-        //System.out.println("Next Station  = " + nextStation.toString());
+        next = station;
+        station.next = this;
+        //System.out.println("Next Station  = " + next.toString());
     }
 
     public void addPrev(Station station) {
-        previousStation = station;
-        station.nextStation = this;
+        previous = station;
+        station.next = this;
     }
 
     public void switchAvailable() {
@@ -60,7 +60,10 @@ public class Station{
         return inService;
     }
 
-    
+    public void connect(Station station) {
+        previous = station;
+        station.next = this;
+    }
 
 
 }

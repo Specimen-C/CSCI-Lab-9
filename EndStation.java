@@ -9,12 +9,12 @@ public class EndStation extends Station{
     }
 
     public void makeEnd() {
-        if(previousStation != null) {
+        if(previous != null) {
             //System.out.println("Previous Station is Null");
-            nextStation = previousStation;
+            next = previous;
         }
-        else if(nextStation != null) {
-            previousStation = nextStation;
+        else if(next != null) {
+            previous = next;
         }
     }
 

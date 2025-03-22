@@ -163,7 +163,7 @@ public class Lab9_Tester {
     assertEquals(expected, s3.toString());
   }
 
-  /*
+  
 
   @Test 
   public void test8(){
@@ -266,6 +266,8 @@ public class Lab9_Tester {
     assertEquals(expected, next.toString());
   }
 
+
+  /*
   @Test 
   public void test11(){
     System.out.println("test short straight trips");

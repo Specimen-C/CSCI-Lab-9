@@ -26,15 +26,16 @@ public class MetroSimulator{
 		public static Station s4;
 		public static EndStation s5;
 
-	/*
+	
 	public static void main(String[] args){
 		initialize();
 		makeOrangeLine();
 		makeRedLine();
 		makePurpleLine();
 
-		int stops = va_square.tripLength(metro_center);
-		System.out.println("There are " + stops + " stops between Virginia Square and Metro Center");
+		
+		//int stops = va_square.tripLength(metro_center);
+		//System.out.println("There are " + stops + " stops between Virginia Square and Metro Center");
 	}
 
 	public static void initialize(){
@@ -66,7 +67,14 @@ public class MetroSimulator{
 
 	public static EndStation makeOrangeLine(){
 		va_square.connect(clarendon);
-		
+		clarendon.connect(court_house);
+		court_house.connect(rosslyn);
+		rosslyn.connect(foggy_bottom);
+		foggy_bottom.connect(farragut_west);
+		farragut_west.connect(mcpherson_square);
+		mcpherson_square.connect(metro_center);
+		metro_center.connect(federal_triangle);
+		federal_triangle.connect(smithsonian);
 		//connect the other stations here
 
 		return va_square;
@@ -75,7 +83,11 @@ public class MetroSimulator{
 
 	public static EndStation makeRedLine(){
 		woodley_park.connect(dupont_circle);
-		
+		dupont_circle.connect(farragut_north);
+		farragut_north.connect(metro_center);
+		metro_center.addTransferStationPrev(farragut_north);
+		metro_center.addTransferStationNext(gallery_place);
+		gallery_place.connect(judiciary_square);
 		//connect the other stations here
 
 		return woodley_park;
@@ -83,10 +95,13 @@ public class MetroSimulator{
 
 	public static EndStation makePurpleLine(){
 		s1.connect(s2);
-		
+		s2.connect(s3);
+		metro_center.addTransferStationPrev(s3);
+		metro_center.addTransferStationNext(s4);
+		s4.connect(s5);
 		//connect the other stations here
 
 		return s1;
 	}
-	*/
+	
 }
