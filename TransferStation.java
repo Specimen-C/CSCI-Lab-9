@@ -26,7 +26,8 @@ public class TransferStation extends Station {
             otherStations.add(station);
         }
 
-        otherStations.add(station);
+        //otherStations.add(station);
+        //previous = station;
         station.next = this;
     }
 
@@ -34,7 +35,7 @@ public class TransferStation extends Station {
         if (!otherStations.contains(station)) {
             otherStations.add(station);
         }
-        otherStations.add(station);
+        //otherStations.add(station);
         station.previous = this;
     }
 

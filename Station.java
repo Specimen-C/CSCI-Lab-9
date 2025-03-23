@@ -1,3 +1,6 @@
+import java.util.Iterator;
+
+
 public class Station{
 
     protected String name; 
@@ -37,6 +40,7 @@ public class Station{
     }
 
     public boolean equals(Station s) {
+        //System.out.println("Comparing " + this.toString() + " and " + s.toString());
         return line.equals(s.line) && name.equals(s.name);
     }
 
@@ -60,35 +64,87 @@ public class Station{
     }
 
     public void connect(Station station) {
-        /*
-        next = station;
-        station.previous = this;
-        */
-
         this.next = station;
         station.previous = this;
-    
-        if (station instanceof TransferStation) {
-          ((TransferStation) station).addTransferStationPrev(this);
-        }
     }
 
-    /*
+    
     public void connect(TransferStation station) {
-        next = station;
-        if(line.equals(station.line)) {
+        //System.out.println("Station line = " + station.line + "\nThis.line = " + line);
+        //Terrible solution but IDK how else to do without hardcoding
+        
+        if(!line.equals("orange")) {
+            //System.out.println("They are not equal");
+            station.addTransferStationPrev(this);
+            this.next = station;
+        }
+        else {
+            //System.out.println("They are  equal");
+            this.next = station;
             station.previous = this;
         }
-
-        //station.addTransferStationPrev(this);
-    }
-
-    public void connect(EndStation station) {
-        next = station;
+        /*
+        station.addTransferStationPrev(this);
+        this.next = station;
         station.previous = this;
-        station.next = this;
+        */
     }
-    */
+
+    public int tripLength(Station station) {
+        return tripLengthHelper(station, this, 0);
+    }
+
+
+    public int tripLengthHelper(Station target, TransferStation current, int counter) {
+        System.out.println("HelperTRANSFER(" + target.toString() + " | " + current.toString() + " | " + counter + ")");
+        if(current.equals(target)) { 
+            return counter;
+        }
+        //System.out.println("HELLO WHAT THE FUCK");
+        int[] offshootLengths = new int[current.otherStations.size() + 1];
+        int iter = 0;
+        for(Station station : current.otherStations) {
+            System.out.println("iter = " + iter + "Station = " + station.toString());
+            if(station.equals(target)) {
+                return counter + 1;
+            }
+            if(!station.next.equals(current) || (station instanceof EndStation)) {
+                System.out.println("Off Shoot going to " + station.toString());
+                offshootLengths[iter] = tripLengthHelper(target, station, counter + 1);
+            }
+
+            iter++;
+        }
+        offshootLengths[offshootLengths.length - 1] = tripLengthHelper(target, current.next, counter + 1);
+        for(int i = 0; i < offshootLengths.length; i++) {
+            System.out.println("offshootLengths[" + i + "] = " + offshootLengths[i]);
+            if(offshootLengths[i] > 0) {
+                System.out.println("\n----------------------------------------------------------------------------------------------\n");
+                return offshootLengths[i];  
+            }
+        }
+
+        return -5;
+    }
+
+
+    public int tripLengthHelper(Station target, Station current, int counter) {
+        
+        if(current instanceof TransferStation) {
+            return tripLengthHelper(target, (TransferStation) current, counter);
+        }
+        else {
+            System.out.println("HelperSTATION(" + target.toString() + " | " + current.toString() + " | " + counter + ")");
+            if(current.equals(target)) { 
+                return counter;
+            }
+            else if(current instanceof EndStation && counter != 0) {
+                return 0;
+            }
+            return tripLengthHelper(target, current.next, counter + 1);
+        }
+    }
+
 
     public String getName() {
         return name;

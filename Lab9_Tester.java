@@ -110,6 +110,7 @@ public class Lab9_Tester {
     assertEquals(true, result);
   }
 
+
   @Test 
   public void test6(){
     System.out.println("test add TransferStation");
@@ -224,6 +225,7 @@ public class Lab9_Tester {
     expected = "TRANSFERSTATION Metro Center: orange/red/purple line, in service: true, previous station: McPherson Square, next station: Federal Triangle\n" +
                     "\tTransfers: \n\tSTATION Farragut North: red line, in service: true, previous station: Dupont Circle, next station: Metro Center\n" + 
                     "\tSTATION Gallery Place: red line, in service: true, previous station: Metro Center, next station: Judiciary Square\n";
+    //System.out.println("expected = " + expected + "\nmetroCenter.toString() = " + next.toString());
     assertEquals(expected, next.toString());
     next = ((TransferStation) next).otherStations.get(1);
     expected = "STATION Gallery Place: red line, in service: true, previous station: Metro Center, next station: Judiciary Square";
@@ -267,7 +269,7 @@ public class Lab9_Tester {
   }
 
 
-  /*
+  
   @Test 
   public void test11(){
     System.out.println("test short straight trips");
@@ -287,6 +289,8 @@ public class Lab9_Tester {
     assertEquals(0, s1.tripLength(s1));
 
   }
+
+  
 
   @Test 
   public void test12(){
@@ -317,12 +321,33 @@ public class Lab9_Tester {
     b1.makeEnd();
     b5.makeEnd();
 
+    /*
+    Station iter = b1;
+		System.out.print(iter.toString() + " ->\n");
+		iter = iter.next;
+		while(!(iter instanceof EndStation )) {
+			System.out.print(iter.toString() + " ->\n");
+			iter = iter.next;
+		}
+		System.out.print(iter.toString() + " ->\n\nPink line");
+
+    iter = s1;
+		System.out.print(iter.toString() + " ->\n");
+		iter = iter.next;
+		while(!(iter instanceof EndStation )) {
+			System.out.print(iter.toString() + " ->\n");
+			iter = iter.next;
+		}
+		System.out.print(iter.toString() + " ->\n");
+    */
+
     assertEquals(4, s1.tripLength(s4));
     assertEquals(4, s1.tripLength(b3));
     assertEquals(4, s1.tripLength(b4));
     assertEquals(5, s1.tripLength(b5));
     assertEquals(5, b1.tripLength(b5));
   }
+
 
 
   @Test 
@@ -340,6 +365,6 @@ public class Lab9_Tester {
     assertEquals(3, MetroSimulator.s2.tripLength(MetroSimulator.gallery_place));
   }
 
-  */
+  
 
 }

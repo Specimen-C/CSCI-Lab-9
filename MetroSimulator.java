@@ -92,6 +92,8 @@ public class MetroSimulator{
 		farragut_north.connect(metro_center);
 		metro_center.addTransferStationPrev(farragut_north);
 		metro_center.addTransferStationNext(gallery_place);
+		metro_center.connect(federal_triangle);
+		mcpherson_square.connect(metro_center);
 		gallery_place.connect(judiciary_square);
 		judiciary_square.makeEnd();
 		//connect the other stations here
@@ -105,6 +107,8 @@ public class MetroSimulator{
 		s2.connect(s3);
 		metro_center.addTransferStationPrev(s3);
 		metro_center.addTransferStationNext(s4);
+		metro_center.connect(federal_triangle);
+		mcpherson_square.connect(metro_center);
 		s4.connect(s5);
 		s5.makeEnd();
 		//connect the other stations here
