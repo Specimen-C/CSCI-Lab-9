@@ -1,0 +1,35 @@
+commit 56b2a4f3d0f9522729cfec63738cbb0cc1ca185f
+Author: Max Eichholz <maxwelleichholz@gmail.com>
+Date:   Sun Mar 23 14:23:49 2025 -0400
+
+    Final Submission
+
+commit 7cf8c5344df0aa7c0368ed27a05f08e4a98d9ba0
+Author: Max Eichholz <maxwelleichholz@gmail.com>
+Date:   Sat Mar 22 19:01:10 2025 -0400
+
+    Nothing major
+
+commit c1aab07fc977fd00cfc21e1987c3e51c62e80c59
+Author: Max Eichholz <maxwelleichholz@gmail.com>
+Date:   Sat Mar 22 18:19:51 2025 -0400
+
+    LOC Work
+
+commit 7bf3467d2cad05b62108110990be059564fe7353
+Author: Max Eichholz <maxwelleichholz@gmail.com>
+Date:   Sat Mar 22 13:49:07 2025 -0400
+
+    _
+
+commit 1fc7c9f56a236c6c896964aad6f356c58664b3b6
+Author: Max Eichholz <maxwelleichholz@gmail.com>
+Date:   Sat Mar 22 13:27:18 2025 -0400
+
+    Tests 1-6 Working
+
+commit 60df101c46cdc56c82a384f508d80464bad9b329
+Author: Max Eichholz <maxwelleichholz@gmail.com>
+Date:   Tue Mar 18 13:16:54 2025 -0400
+
+    Creating Files + Planning
